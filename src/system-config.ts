@@ -7,10 +7,14 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  'material-design-lite': 'material-design-lite/dist/material.js'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  'material-design-lite':{
+    format: 'cjs'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
