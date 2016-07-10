@@ -12,7 +12,7 @@ module.exports = function(app) {
 
   app.use(proxyPath, function(req, res, next){
     // include root path in proxied request
-    req.url = proxyPath + '/' + req.url;
+    req.url = proxyPath + req.url;
     proxy.web(req, res, { target: 'http://192.168.3.146:8080' });
   });
 };

@@ -7,7 +7,7 @@ import {Observable} from "rxjs/Rx";
 export class AuthService {
 
   private loggedIn: boolean = false;
-  private loginPath:  string = '/cvsi-server/login';
+  private loginPath:  string = '/api/login';
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -19,14 +19,11 @@ export class AuthService {
     headers.append('Content-type', 'application/json');
 
     let options = new RequestOptions({headers});
+    let body = JSON.stringify({email,password});
 
-    let body = {email, password};
-    console.log(body);
-
-    this.http.post(this.loginPath, JSON.stringify(body), options)
-      .map((res) => {console.log(res); res.json()})
-      .map((res:any) => {
-        console.log(res);
+    return this.http.post(this.loginPath, body, options)
+      .map(res => res.json())
+      .map((res: any) => {
 
         if (res.succes) {
           localStorage.setItem('auth_token', res.auth_token);
@@ -48,7 +45,7 @@ export class AuthService {
   }
 
   private handleLoginError(err: any) {
-    console.log(err);
+    // console.log(err);
     return Observable.throw(err);
   }
 }
