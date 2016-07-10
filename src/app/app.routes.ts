@@ -4,7 +4,13 @@ import {HomeRoutes} from "./home.routes";
 
 export const appRoutes: RouterConfig = [
   ...AuthRoutes,
-  ...HomeRoutes
+  ...HomeRoutes,
+  {
+    // Handle unknown paths
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
+  }
 ];
 
 export const APP_ROUTER_PROVIDERS = [
