@@ -1,5 +1,5 @@
 /*jshint node:true*/
-var proxyPath = '/cvsiServer';
+var proxyPath = '/cvsi-server';
 
 module.exports = function(app) {
   // For options, see:
