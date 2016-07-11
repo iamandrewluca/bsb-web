@@ -12,10 +12,10 @@ module.exports = function(app) {
   });
 
   loginRouter.post('/', jsonParser, function(req, res) {
-    console.log(req.body);
+    console.log(req);
     res.send({
       'succes': true,
-      'auth_token': req.body
+      'auth_token': 'jora'
     });
   });
 
@@ -48,6 +48,6 @@ module.exports = function(app) {
   // After installing, you need to `use` the body-parser for
   // this mock uncommenting the following line:
   //
-  app.use('/api/login', require('body-parser').json({ type: 'application/*+json' }));
+  // app.use('/api/login', require('body-parser').json());
   app.use('/api/login', loginRouter);
 };

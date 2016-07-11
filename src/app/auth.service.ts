@@ -7,7 +7,9 @@ import {Observable} from "rxjs/Rx";
 export class AuthService {
 
   private loggedIn: boolean = false;
+
   private loginPath:  string = '/api/login';
+  private registerPath: string = '/api/registration';
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -44,7 +46,37 @@ export class AuthService {
     return this.loggedIn;
   }
 
+  register(email: string, name: string, password: string,
+           phone: string, surname: string, userName: string) {
+
+    let headers = new Headers();
+    headers.append('Content-type', 'application/json');
+
+    let options = new RequestOptions({headers});
+    let body = JSON.stringify({email, name, password, phone, surname, userName});
+
+    return this.http.post(this.registerPath, body, options)
+      .map(res => res.json())
+      .map((res: any) => {
+
+        console.log(res);
+
+        return res;
+      })
+      .catch(this.handleRegisterError);
+
+  }
+
+  forgot(email: string) {
+
+  }
+
   private handleLoginError(err: any) {
+    // console.log(err);
+    return Observable.throw(err);
+  }
+
+  private handleRegisterError(err: any) {
     // console.log(err);
     return Observable.throw(err);
   }
