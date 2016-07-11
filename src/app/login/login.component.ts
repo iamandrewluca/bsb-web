@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
 
+    // this.authService.register('thendrluca@gmail.com', 'andasdrei', 'jorajorajora', '123456789', 'luca', 'anaasdsddrei')
+    //   .subscribe(res => console.log(res));
+
     this.authService.login(this.email, this.password).subscribe((result) => {
       if (result) {
         this.router.navigate(['home']);

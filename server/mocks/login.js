@@ -5,38 +5,12 @@ module.exports = function(app) {
   var bodyParser = require('body-parser');
   var jsonParser = bodyParser.json({ type: 'application/*+json' });
 
-  loginRouter.get('/', function(req, res) {
-    res.send({
-      'login': []
-    });
-  });
-
   loginRouter.post('/', jsonParser, function(req, res) {
-    console.log(req);
+    console.log(req.body);
     res.send({
       'succes': true,
       'auth_token': 'jora'
     });
-  });
-
-  loginRouter.get('/:id', function(req, res) {
-    res.send({
-      'login': {
-        id: req.params.id
-      }
-    });
-  });
-
-  loginRouter.put('/:id', function(req, res) {
-    res.send({
-      'login': {
-        id: req.params.id
-      }
-    });
-  });
-
-  loginRouter.delete('/:id', function(req, res) {
-    res.status(204).end();
   });
 
   // The POST and PUT call will not contain a request body
@@ -49,5 +23,6 @@ module.exports = function(app) {
   // this mock uncommenting the following line:
   //
   // app.use('/api/login', require('body-parser').json());
+  app.use('/api/login', jsonParser);
   app.use('/api/login', loginRouter);
 };
