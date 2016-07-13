@@ -1,5 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, AfterViewInit} from "@angular/core";
 import {ROUTER_DIRECTIVES} from "@angular/router";
+declare var componentHandler: any;
 
 @Component({
   moduleId: module.id,
@@ -8,5 +9,10 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
   styleUrls: ['auth.component.css'],
   directives: [ROUTER_DIRECTIVES]
 })
-export class AuthComponent {
+export class AuthComponent implements AfterViewInit {
+
+  ngAfterViewInit() {
+    componentHandler.upgradeAllRegistered();
+  }
+
 }

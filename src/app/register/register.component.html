@@ -1,3 +1,53 @@
-<p>
-  register works!
-</p>
+<form (ngSubmit)="onSubmit()" action="">
+
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="name" [(ngModel)]="name" name="name">
+        <label class="mdl-textfield__label" for="name">Name...</label>
+      </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="surname" [(ngModel)]="surname" name="surname">
+        <label class="mdl-textfield__label" for="surname">Surname...</label>
+      </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--12-col">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="email" [(ngModel)]="email" name="email">
+        <label class="mdl-textfield__label" for="email">Email...</label>
+      </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--12-col">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="userName" [(ngModel)]="userName" name="userName">
+        <label class="mdl-textfield__label" for="userName">Username...</label>
+      </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--12-col">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="phone" [(ngModel)]="phone" name="phone">
+        <label class="mdl-textfield__label" for="phone">Phone...</label>
+      </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--12-col">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="password" id="password" [(ngModel)]="password" name="password">
+        <label class="mdl-textfield__label" for="password">Password...</label>
+      </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--12-col">
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        Register
+      </button>
+    </div>
+
+  </div>
+</form>

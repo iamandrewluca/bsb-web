@@ -8,8 +8,9 @@ export class AuthService {
 
   private loggedIn: boolean = false;
 
-  private loginPath:  string = '/api/login';
-  private registerPath: string = '/api/registration';
+  private loginPath:  string = '/cvsi-server/user/login';
+  private registerPath: string = '/cvsi-server/user';
+  private forgotPath: string = 'cvsi-server/forgot';
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -19,9 +20,10 @@ export class AuthService {
 
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
+    headers.append('Accept', 'application/json');
 
     let options = new RequestOptions({headers});
-    let body = JSON.stringify({email,password});
+    let body = JSON.stringify({email, password});
 
     return this.http.post(this.loginPath, body, options)
       .map(res => res.json())
@@ -77,7 +79,7 @@ export class AuthService {
   }
 
   private handleRegisterError(err: any) {
-    // console.log(err);
+    console.log(err);
     return Observable.throw(err);
   }
 }

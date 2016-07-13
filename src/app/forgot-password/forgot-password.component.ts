@@ -1,4 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, AfterViewInit} from "@angular/core";
+import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
+declare var componentHandler: any;
 
 @Component({
   moduleId: module.id,
@@ -6,11 +9,22 @@ import {Component, OnInit} from "@angular/core";
   templateUrl: 'forgot-password.component.html',
   styleUrls: ['forgot-password.component.css']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit, AfterViewInit {
 
-  constructor() {}
+  email: string;
+
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    componentHandler.upgradeAllRegistered();
+  }
+
+  onSubmit() {
+    this.authService.forgot(this.email);
+    this.router.navigate(['auth']);
   }
 
 }

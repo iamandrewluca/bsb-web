@@ -1,6 +1,6 @@
 import {Component, AfterViewInit} from "@angular/core";
 import {ROUTER_DIRECTIVES} from "@angular/router";
-declare var componentHandler;
+declare var componentHandler: any;
 
 @Component({
   moduleId: module.id,
@@ -10,7 +10,8 @@ declare var componentHandler;
   directives: [ROUTER_DIRECTIVES]
 })
 export class AppComponent implements AfterViewInit {
+
   ngAfterViewInit() {
-    componentHandler.upgradeDom();
+    // componentHandler.upgradeAllRegistered();
   }
 }
