@@ -3,7 +3,7 @@ module.exports = function(app) {
   var express = require('express');
   var loginRouter = express.Router();
 
-  loginRouter.post('/cvsi-server/login', function(req, res) {
+  loginRouter.post('/cvsi-server/user/login', function(req, res) {
     console.log(req.body); // why body is empty?
     res.send({
       'succes': true,

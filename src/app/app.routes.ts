@@ -8,8 +8,8 @@ export const appRoutes: RouterConfig = [
   {
     // Handle unknown paths
     path: '**',
-    redirectTo: '',
-    pathMatch: 'full'
+    redirectTo: '/',
+    pathMatch: 'prefix'
   }
 ];
 
