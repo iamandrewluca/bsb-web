@@ -11,10 +11,11 @@ import {
 } from '@angular/core/testing';
 
 import { ProductsListComponent } from './products-list.component';
+import {ProductService} from "../product.service";
 
 describe('Component: ProductsList', () => {
-  it('should create an instance', () => {
-    let component = new ProductsListComponent();
+  it('should create an instance', inject([ProductService], (productService: ProductService) => {
+    let component = new ProductsListComponent(productService);
     expect(component).toBeTruthy();
-  });
+  }));
 });
