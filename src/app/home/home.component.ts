@@ -18,6 +18,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     componentHandler.upgradeAllRegistered();
+
+    var obfuscator = document.getElementsByClassName('mdl-layout__obfuscator').item(0);
+    var drawerLinks = document.querySelectorAll('.bsb-nav a');
+
+    for (var i = 0; i < drawerLinks.length; ++i) {
+      drawerLinks.item(i).addEventListener('click', function () {
+        obfuscator.dispatchEvent(new MouseEvent('click'));
+      });
+    }
   }
 
 }
