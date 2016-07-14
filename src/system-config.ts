@@ -44,6 +44,15 @@ const barrels: string[] = [
   'app/register',
   'app/forgot-password',
   'app/login',
+  'app/products-list',
+  'app/my-items',
+  'app/product-component',
+  'app/product-details',
+  'app/logout',
+  'app/profile',
+  'app/settings',
+  'app/terms',
+  'app/about',
   /** @cli-barrel */
 ];
 

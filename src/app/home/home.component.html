@@ -28,30 +28,32 @@
       </div>
     </div>
     <nav class="mdl-navigation bsb-nav">
-      <a class="mdl-navigation__link" href="">
+      <a class="mdl-navigation__link" [routerLink]="['/']">
         <i class="material-icons">home</i>HOME
       </a>
-      <a class="mdl-navigation__link" href="">
+      <a class="mdl-navigation__link" [routerLink]="['/my-items']">
         <i class="material-icons">list</i>MY ITEMS
       </a>
-      <a class="mdl-navigation__link" href="">
+      <a class="mdl-navigation__link" [routerLink]="['/profile']">
         <i class="material-icons">account_box</i>PROFILE
       </a>
-      <a class="mdl-navigation__link" href="">
+      <a class="mdl-navigation__link" [routerLink]="['/settings']">
         <i class="material-icons">settings</i>SETTINGS
       </a>
-      <a class="mdl-navigation__link" href="">
+      <a class="mdl-navigation__link" [routerLink]="['/terms']">
         <i class="material-icons">book</i>TERMS
       </a>
-      <a class="mdl-navigation__link" href="">
+      <a class="mdl-navigation__link" [routerLink]="['/about']">
         <i class="material-icons">info</i>ABOUT
       </a>
-      <a class="mdl-navigation__link" href="">
+      <a class="mdl-navigation__link" [routerLink]="['/auth/logout']">
         <i class="material-icons">exit_to_app</i>LOGOUT
       </a>
     </nav>
   </div>
   <main class="mdl-layout__content">
-    <div class="page-content"><!-- Your content goes here --></div>
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
   </main>
 </div>
