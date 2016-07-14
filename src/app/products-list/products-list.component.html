@@ -1,3 +1,14 @@
-<p>
-  products-list works!
-</p>
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp products-table">
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td class="mdl-data-table__cell--non-numeric">
+        {{product.title}}
+      </td>
+    </tr>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">
+        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>

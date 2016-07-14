@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions} from "@angular/http";
+import {Product} from "./product";
 
 @Injectable()
 export class ProductService {
 
   private productPath: string = '/cvsi-server/product';
 
-  products: any;
+  private products: Product[];
 
   constructor(private http: Http) {}
 
