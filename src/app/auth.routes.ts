@@ -6,7 +6,6 @@ import {RegisterComponent} from "./register/register.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {LoginComponent} from "./login/login.component";
 import {HomeGuard} from "./home-guard";
-import {LogoutComponent} from "./logout/logout.component";
 
 export const AuthRoutes: RouterConfig = [
   {
@@ -16,7 +15,6 @@ export const AuthRoutes: RouterConfig = [
     children: [
       { path: 'register', component: RegisterComponent },
       { path: 'forgot', component: ForgotPasswordComponent },
-      { path: 'logout', component: LogoutComponent },
       { path: '', component: LoginComponent }
     ]
   }

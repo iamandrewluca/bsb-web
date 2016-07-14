@@ -40,6 +40,7 @@ export class AuthService {
   }
 
   logout() {
+    console.log('JORA');
     localStorage.removeItem('auth_token');
     this.loggedIn = false;
   }

@@ -28,25 +28,25 @@
       </div>
     </div>
     <nav class="mdl-navigation bsb-nav">
-      <a class="mdl-navigation__link" [routerLink]="['/']">
+      <a class="mdl-navigation__link" [routerLink]="['/']" (click)="closeDrawer()">
         <i class="material-icons">home</i>HOME
       </a>
-      <a class="mdl-navigation__link" [routerLink]="['/my-items']">
+      <a class="mdl-navigation__link" [routerLink]="['/my-items']" (click)="closeDrawer()">
         <i class="material-icons">list</i>MY ITEMS
       </a>
-      <a class="mdl-navigation__link" [routerLink]="['/profile']">
+      <a class="mdl-navigation__link" [routerLink]="['/profile']" (click)="closeDrawer()">
         <i class="material-icons">account_box</i>PROFILE
       </a>
-      <a class="mdl-navigation__link" [routerLink]="['/settings']">
+      <a class="mdl-navigation__link" [routerLink]="['/settings']" (click)="closeDrawer()">
         <i class="material-icons">settings</i>SETTINGS
       </a>
-      <a class="mdl-navigation__link" [routerLink]="['/terms']">
+      <a class="mdl-navigation__link" [routerLink]="['/terms']" (click)="closeDrawer()">
         <i class="material-icons">book</i>TERMS
       </a>
-      <a class="mdl-navigation__link" [routerLink]="['/about']">
+      <a class="mdl-navigation__link" [routerLink]="['/about']" (click)="closeDrawer()">
         <i class="material-icons">info</i>ABOUT
       </a>
-      <a class="mdl-navigation__link" [routerLink]="['/auth/logout']">
+      <a class="mdl-navigation__link logout" (click)="logout()">
         <i class="material-icons">exit_to_app</i>LOGOUT
       </a>
     </nav>
