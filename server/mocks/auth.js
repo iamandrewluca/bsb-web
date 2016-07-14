@@ -3,7 +3,7 @@ module.exports = function(app) {
   var express = require('express');
   var loginRouter = express.Router();
 
-  loginRouter.post('/cvsi-server/user/login', function(req, res) {
+  loginRouter.post('/login', function(req, res) {
     console.log(req.body); // why body is empty?
     res.send({
       'succes': true,
@@ -11,7 +11,11 @@ module.exports = function(app) {
     });
   });
 
-
+  loginRouter.post('/register', function (req, res) {
+    res.send({
+      'succes': true
+    });
+  });
 
   var bodyParser = require('body-parser');
 
@@ -20,5 +24,5 @@ module.exports = function(app) {
     extended: false
   }));
 
-  app.use(loginRouter);
+  app.use('/cvsi-server/user', loginRouter);
 };

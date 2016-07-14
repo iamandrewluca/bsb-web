@@ -19,6 +19,6 @@ module.exports = function(app) {
   app.use(morgan('dev'));
 
   mocks.forEach(function(route) { route(app); });
-  // proxies.forEach(function(route) { route(app); });
+  proxies.forEach(function(route) { route(app); });
 
 };

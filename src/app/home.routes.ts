@@ -8,6 +8,7 @@ import {AboutComponent} from "./about/about.component";
 import {TermsComponent} from "./terms/terms.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {ProductService} from "./product.service";
 
 export const HomeRoutes: RouterConfig = [
   {
@@ -25,3 +26,5 @@ export const HomeRoutes: RouterConfig = [
     ]
   }
 ];
+
+export const HOME_PROVIDERS = [ProductService];
