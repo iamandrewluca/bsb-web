@@ -1,14 +1,25 @@
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp products-table">
   <tbody>
-    <tr *ngFor="let product of products">
-      <td class="mdl-data-table__cell--non-numeric">
-        {{product.title}}
-      </td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">
-        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
-      </td>
-    </tr>
+  <tr *ngFor="let product of products" (click)="showProduct(product)">
+    <td>
+      {{product.categoryEnumList[0]}}
+    </td>
+    <td class="mdl-data-table__cell--non-numeric">
+      {{product.title}}
+    </td>
+    <td>
+      {{product.price}} {{product.currency}}
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr class="loading-row" *ngIf="isLoadingProducts">
+    <td class="mdl-data-table__cell--non-numeric">
+      <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+    </td>
+  </tr>
   </tbody>
 </table>
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored add-button" (click)="newProduct()">
+  <i class="material-icons">add</i>
+</button>

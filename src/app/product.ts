@@ -1,5 +1,6 @@
 export class Product {
-  constructor(public borrow: boolean,
+  constructor(public id: string,
+  public borrow: boolean,
   public categoryEnumList: string[],
   public createdDate: number,
   public currency: string,

@@ -5,7 +5,7 @@ import {Product} from "./product";
 @Injectable()
 export class ProductService {
 
-  private productPath: string = '/cvsi-server/product';
+  private productPath: string = '/cvsi-server/product?count=200';
 
   private products: Product[];
 
@@ -18,6 +18,10 @@ export class ProductService {
     let options = new RequestOptions({headers});
 
     return this.http.get(this.productPath, options);
+  }
+
+  getProduct(id: string) {
+    return "";
   }
 
 }

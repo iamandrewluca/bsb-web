@@ -12,7 +12,8 @@ module.exports = function(app) {
 
   app.use(proxyPath, function(req, res, next){
     // include root path in proxied request
+    console.log("proxy is used");
     req.url = proxyPath + req.url;
-    proxy.web(req, res, { target: 'http://192.168.3.146:8080' });
+    proxy.web(req, res, { target: 'http://192.168.3.191:8080' });
   });
 };

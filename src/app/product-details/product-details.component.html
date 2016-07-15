@@ -1,3 +1,18 @@
-<p>
-  product-details works!
-</p>
+<div class="mdl-grid" *ngIf="product">
+  <div class="mdl-cell mdl-cell--12-col">
+    <h6>{{product.title}}</h6>
+    <div class="product-type">
+      Type: {{product.categoryEnumList}}
+    </div>
+    <div class="borrow">
+      Lend or borrow: {{product.borrow}}
+    </div>
+    <div class="product-price">
+      Price: {{product.price}}
+    </div>
+    <br/>
+    <div class="description">
+      <p>{{product.description}}</p>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../product.service";
 import {Product} from "../product";
+import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -10,17 +11,33 @@ import {Product} from "../product";
 })
 export class ProductsListComponent implements OnInit {
 
-  products: Product[];
+  isLoadingProducts: boolean = false;
 
-  constructor(private productService: ProductService) {}
+  products: Product[] = [];
+
+  constructor(private router: Router, private productService: ProductService) {}
 
   ngOnInit() {
     this.getProducts();
   }
 
   getProducts() {
+    this.isLoadingProducts = true;
     this.productService.getProducts()
-      .subscribe(res => this.products = res.json().products);
+      .subscribe((res) => {
+        this.isLoadingProducts = false;
+
+        this.products.push(...res.json().list);
+      });
   }
+
+  showProduct(product: Product) {
+    this.router.navigate(['/product', product.id]);
+  }
+
+  newProduct() {
+    this.router.navigate(['product']);
+  }
+
 
 }

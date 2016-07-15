@@ -4,10 +4,10 @@ module.exports = function(app) {
   var loginRouter = express.Router();
 
   loginRouter.post('/login', function(req, res) {
-    console.log(req.body); // why body is empty?
+    console.log(req);
     res.send({
       'succes': true,
-      'auth_token': 'this is our token'
+      'auth_token': 'this is token măi'
     });
   });
 
@@ -21,7 +21,7 @@ module.exports = function(app) {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
   }));
 
   app.use('/cvsi-server/user', loginRouter);

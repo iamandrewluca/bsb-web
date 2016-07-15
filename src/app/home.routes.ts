@@ -9,6 +9,7 @@ import {TermsComponent} from "./terms/terms.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {ProductService} from "./product.service";
+import {NewProductComponent} from "./new-product/new-product.component";
 
 export const HomeRoutes: RouterConfig = [
   {
@@ -19,6 +20,7 @@ export const HomeRoutes: RouterConfig = [
       { path: '', component: ProductsListComponent },
       { path: 'my-items', component: MyItemsComponent },
       { path: 'product/:id', component: ProductDetailsComponent },
+      { path: 'product', component: NewProductComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'terms', component: TermsComponent },

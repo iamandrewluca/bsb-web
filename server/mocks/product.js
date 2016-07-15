@@ -7,8 +7,9 @@ module.exports = function(app) {
 
   var products = [];
 
-  for (var i = 0; i < 20; ++i) {
+  for (var i = 0; i < 50; ++i) {
     var product = {
+      "id": chance.hash(),
       "borrow": chance.bool(),
       "categoryEnumList": chance.pickset(['BUY', 'BORROW', 'SELL'], chance.natural({min:1,max:3})),
       "createdDate": chance.timestamp(),
@@ -64,5 +65,5 @@ module.exports = function(app) {
   // this mock uncommenting the following line:
   //
   //app.use('/api/product', require('body-parser').json());
-  app.use('/cvsi-server/product', productRouter);
+  // app.use('/cvsi-server/product', productRouter);
 };
