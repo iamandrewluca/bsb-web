@@ -3,11 +3,14 @@ module.exports = function(app) {
   var express = require('express');
   var loginRouter = express.Router();
 
-  loginRouter.post('/login', function(req, res) {
-    console.log(req);
+  var bodyParser = require('body-parser');
+
+  loginRouter.post('/login', bodyParser.json(), function(req, res) {
+    console.log(req.body);
     res.send({
       'succes': true,
-      'auth_token': 'this is token măi'
+      'auth_token': 'this is token măi',
+      'body': req.body
     });
   });
 
@@ -16,13 +19,6 @@ module.exports = function(app) {
       'succes': true
     });
   });
-
-  var bodyParser = require('body-parser');
-
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({
-    extended: true
-  }));
 
   app.use('/cvsi-server/user', loginRouter);
 };

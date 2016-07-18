@@ -10,7 +10,7 @@ export class AuthService {
 
   private loginPath:  string = '/cvsi-server/user/login';
   private registerPath: string = '/cvsi-server/user';
-  private forgotPath: string = 'cvsi-server/forgot';
+  private forgotPath: string = '/cvsi-server/forgot';
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -19,7 +19,7 @@ export class AuthService {
   login(email: string, password: string) {
 
     let headers = new Headers();
-    headers.append('Content-type', 'application/json');
+    headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
 
     let options = new RequestOptions({headers});

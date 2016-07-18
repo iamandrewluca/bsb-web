@@ -27,7 +27,7 @@ export class ProductsListComponent implements OnInit {
       .subscribe((res) => {
         this.isLoadingProducts = false;
 
-        this.products.push(...res.json().list);
+        this.products.push(...res.json().products);
       });
   }
 

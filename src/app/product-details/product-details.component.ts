@@ -21,11 +21,11 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       if (params['id'] != undefined) {
 
+        var id = params['id'];
 
-        this.productService.getProducts().map(res => res.json().list)
-          .subscribe(products => {
-            this.product = products.find(product => product.id == params['id']);
-          });
+        this.productService.getProduct(id)
+          .map(res => res.json().product)
+          .subscribe(product => this.product = product);
 
       }
     });

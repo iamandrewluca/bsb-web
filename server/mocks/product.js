@@ -37,9 +37,7 @@ module.exports = function(app) {
 
   productRouter.get('/:id', function(req, res) {
     res.send({
-      'product': {
-        id: req.params.id
-      }
+      'product': products[0]
     });
   });
 
@@ -65,5 +63,5 @@ module.exports = function(app) {
   // this mock uncommenting the following line:
   //
   //app.use('/api/product', require('body-parser').json());
-  // app.use('/cvsi-server/product', productRouter);
+  app.use('/cvsi-server/product', productRouter);
 };
