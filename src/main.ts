@@ -19,6 +19,8 @@ bootstrap(AppComponent, [
     provide: AuthHttp,
     useFactory: (http) => {
       return new AuthHttp(new AuthConfig({
+        headerName: 'X-Auth-Token',
+        noTokenScheme: true,
         globalHeaders: [{'Content-Type':'application/json'}]
       }), http);
     },

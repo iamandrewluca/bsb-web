@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ProductService} from "../product.service";
-import {Product} from "../product";
+import {Component, OnInit} from "@angular/core";
+import {ProductService} from "../services/product.service";
+import {Product} from "../models/product";
 import {Router} from "@angular/router";
 
 @Component({
@@ -27,7 +27,7 @@ export class ProductsListComponent implements OnInit {
       .subscribe((res) => {
         this.isLoadingProducts = false;
 
-        this.products.push(...res.json().products);
+        this.products.push(...res.json().list);
       });
   }
 

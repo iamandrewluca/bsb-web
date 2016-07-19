@@ -1,6 +1,6 @@
 import {Component, OnInit, AfterViewInit} from "@angular/core";
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthService} from "../services/auth.service";
 declare var componentHandler: any;
 
 @Component({

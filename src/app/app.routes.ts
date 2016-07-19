@@ -1,6 +1,6 @@
 import {provideRouter, RouterConfig} from "@angular/router";
-import {AuthRoutes, APP_AUTH_PROVIDERS} from "./auth.routes";
-import {HomeRoutes, APP_HOME_PROVIDERS} from "./home.routes";
+import {AuthRoutes, APP_AUTH_PROVIDERS} from "./routes/auth.routes";
+import {HomeRoutes, APP_HOME_PROVIDERS} from "./routes/home.routes";
 
 export const appRoutes: RouterConfig = [
   ...AuthRoutes,

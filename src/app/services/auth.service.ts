@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http, Headers} from "@angular/http";
 import "rxjs/add/operator/catch";
 import {Observable} from "rxjs/Rx";
-import {environment} from "./environment";
+import {environment} from "../environment";
 
 @Injectable()
 export class AuthService {

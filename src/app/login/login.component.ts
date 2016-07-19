@@ -1,5 +1,5 @@
 import {Component, AfterViewInit} from "@angular/core";
-import {AuthService} from "../auth.service";
+import {AuthService} from "../services/auth.service";
 import {Router, ROUTER_DIRECTIVES} from "@angular/router";
 declare var componentHandler: any;
 

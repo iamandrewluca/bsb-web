@@ -1,6 +1,6 @@
 import {Component, OnInit, AfterViewInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthService} from "../services/auth.service";
 declare var componentHandler: any;
 
 @Component({
@@ -29,8 +29,11 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     this.authService.register(this.email, this.name,this.password, this.phone, this.surname, this.userName)
-      .subscribe(res => console.log(res));
-    this.router.navigate(['auth']);
+      .subscribe((result) => {
+        if (result == "SUCCES") {
+          this.router.navigate(['auth']);
+        }
+      });
   }
 
 }

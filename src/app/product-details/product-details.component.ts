@@ -1,7 +1,7 @@
-import {Component, OnInit, Input, OnDestroy} from '@angular/core';
-import {ProductService} from "../product.service";
+import {Component, OnInit, OnDestroy} from "@angular/core";
+import {ProductService} from "../services/product.service";
 import {ActivatedRoute} from "@angular/router";
-import {Product} from "../product";
+import {Product} from "../models/product";
 
 @Component({
   moduleId: module.id,

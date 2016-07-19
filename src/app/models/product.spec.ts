@@ -1,10 +1,10 @@
 /* tslint:disable:no-unused-variable */
 
 import {describe, it} from "@angular/core/testing";
+import {Product} from "./product";
 
-describe('Component: ProductDetails', () => {
+describe('Product', () => {
   it('should create an instance', () => {
-    // let component = new ProductDetailsComponent();
-    // expect(component).toBeTruthy();
+    // expect(new Product()).toBeTruthy();
   });
 });
