@@ -24,7 +24,7 @@ export class LoginComponent implements AfterViewInit {
   onSubmit() {
 
     this.authService.login(this.email, this.password).subscribe((result) => {
-      if (result) {
+      if (result == "SUCCESS") {
         this.router.navigate(['/']);
       }
     });

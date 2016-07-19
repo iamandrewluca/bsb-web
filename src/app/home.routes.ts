@@ -29,4 +29,4 @@ export const HomeRoutes: RouterConfig = [
   }
 ];
 
-export const HOME_PROVIDERS = [ProductService];
+export const APP_HOME_PROVIDERS = [ProductService];

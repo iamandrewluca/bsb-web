@@ -20,4 +20,4 @@ export const AuthRoutes: RouterConfig = [
   }
 ];
 
-export const AUTH_PROVIDERS = [AuthGuard, HomeGuard, AuthService];
+export const APP_AUTH_PROVIDERS = [AuthGuard, HomeGuard, AuthService];

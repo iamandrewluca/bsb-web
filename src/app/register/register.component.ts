@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     this.authService.register(this.email, this.name,this.password, this.phone, this.surname, this.userName)
+      .subscribe(res => console.log(res));
     this.router.navigate(['auth']);
   }
 

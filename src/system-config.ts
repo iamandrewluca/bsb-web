@@ -7,13 +7,17 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  'material-design-lite': 'material-design-lite/dist/material.js'
+  'material-design-lite': 'material-design-lite/dist/material.js',
+  'angular2-jwt': 'vendor/angular2-jwt'
 };
 
 /** User packages configuration. */
 const packages: any = {
   'material-design-lite':{
     format: 'cjs'
+  },
+  'angular2-jwt': {
+    main: 'angular2-jwt.js'
   }
 };
 

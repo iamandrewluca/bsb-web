@@ -14,6 +14,7 @@ module.exports = function(defaults) {
       ]
     },
     vendorNpmFiles: [
+      'angular2-jwt/**/*.+(js|js.map)',
       'material-design-lite/dist/material.min.js',
       'systemjs/dist/system-polyfills.js',
       'systemjs/dist/system.src.js',
