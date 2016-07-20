@@ -48,19 +48,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   search() {
 
-    if (this.previousSearchText != this.searchText.trim()) {
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
 
-      clearTimeout(this.searchTimeout);
-      this.searchTimeout = setTimeout(() => {
+      if (this.searchInteractionService.getSearchObserversCount() != 0 &&
+          this.previousSearchText != this.searchText.trim()) {
 
         let searchProduct = new SearchProduct();
         searchProduct.title = this.searchText.trim();
+
         this.searchInteractionService.announceSearch(searchProduct);
 
-      }, 2000);
+        this.previousSearchText = this.searchText.trim();
+      }
 
-      this.previousSearchText = this.searchText.trim();
-    }
+    }, 2000);
   }
 
 }

@@ -26,7 +26,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
               private productService: ProductService,
               private searchInteractionService: SearchInteractionService) {
 
-    productService.productsObservable$
+    this.productsSubscription = productService.productsObservable$
       .subscribe((updatedProducts) => {
         this.products = updatedProducts;
         this.isLoadingProducts = false;

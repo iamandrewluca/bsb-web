@@ -18,4 +18,8 @@ export class SearchInteractionService {
     this.searchAnnouncedSource.next(searchProduct);
   }
 
+  getSearchObserversCount() {
+    return this.searchAnnouncedSource.observers.length;
+  }
+
 }
