@@ -11,28 +11,29 @@ import {Product} from "../models/product";
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
 
-  product: Product;
+  private product: Product;
 
-  sub: any;
+  private routeSub: any;
+  private productSub: any;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.routeSub = this.route.params.subscribe(params => {
       if (params['id'] != undefined) {
 
-        var id = params['id'];
-
-        this.productService.getProduct(id)
-          .map(res => res.json().product)
-          .subscribe(product => this.product = product);
-
+        this.productSub = this.productService.productsObservable$
+          .subscribe((updatedProducts) => {
+            this.product = updatedProducts.find(product => product.id == params['id']);
+          });
+        this.productService.get(params['id']);
       }
     });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.routeSub.unsubscribe();
+    this.productSub.unsubscribe();
   }
 
 }

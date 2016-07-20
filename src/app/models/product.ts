@@ -8,5 +8,6 @@ export class Product {
   public limitDate: number,
   public price: number,
   public title: string,
-  public updatedDate: number) {}
+  public updatedDate: number
+  /*,public offset: number = 0*/) {}
 }

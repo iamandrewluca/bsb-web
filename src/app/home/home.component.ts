@@ -2,6 +2,7 @@ import {Component, OnInit, AfterViewInit} from "@angular/core";
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
 import {SearchInteractionService} from "../services/search-interaction.service";
+import {SearchProduct} from "../models/search-product";
 declare var componentHandler: any;
 
 @Component({
@@ -16,7 +17,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   obfuscator: Element;
 
-  searchText: string;
+  previousSearchText: string = '';
+  searchText: string = '';
+
   searchTimeout: any;
 
   constructor(private router: Router,
@@ -44,11 +47,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   search() {
-    clearTimeout(this.searchTimeout);
-    this.searchTimeout = setTimeout(() => {
-      this.searchInteractionService.announceSearch(this.searchText);
-    }, 1000)
 
+    if (this.previousSearchText != this.searchText.trim()) {
+
+      clearTimeout(this.searchTimeout);
+      this.searchTimeout = setTimeout(() => {
+
+        let searchProduct = new SearchProduct();
+        searchProduct.title = this.searchText.trim();
+        this.searchInteractionService.announceSearch(searchProduct);
+
+      }, 2000);
+
+      this.previousSearchText = this.searchText.trim();
+    }
   }
 
 }

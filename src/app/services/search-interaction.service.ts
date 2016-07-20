@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Subject} from "rxjs/Rx";
+import {SearchProduct} from "../models/search-product";
 
 @Injectable()
 export class SearchInteractionService {
@@ -7,14 +8,14 @@ export class SearchInteractionService {
   constructor() {}
 
   // Observable string sources
-  private searchAnnouncedSource = new Subject<string>();
+  private searchAnnouncedSource = new Subject<SearchProduct>();
 
   // Observable string streams
   searchAnnounced$ = this.searchAnnouncedSource.asObservable();
 
   // Service message commands
-  announceSearch(text: string) {
-    this.searchAnnouncedSource.next(text);
+  announceSearch(searchProduct: SearchProduct) {
+    this.searchAnnouncedSource.next(searchProduct);
   }
 
 }

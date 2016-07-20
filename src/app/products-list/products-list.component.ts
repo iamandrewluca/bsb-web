@@ -4,6 +4,7 @@ import {Product} from "../models/product";
 import {Router} from "@angular/router";
 import {SearchInteractionService} from "../services/search-interaction.service";
 import {Subscription} from "rxjs/Rx";
+import {SearchProduct} from "../models/search-product";
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,8 @@ import {Subscription} from "rxjs/Rx";
 export class ProductsListComponent implements OnInit, OnDestroy {
 
   searchSubscription: Subscription;
-  getProductsSubscription: Subscription;
+  requestProductsSubscription: Subscription;
+  productsSubscription: Subscription;
 
   isLoadingProducts: boolean = false;
 
@@ -24,41 +26,39 @@ export class ProductsListComponent implements OnInit, OnDestroy {
               private productService: ProductService,
               private searchInteractionService: SearchInteractionService) {
 
+    productService.productsObservable$
+      .subscribe((updatedProducts) => {
+        this.products = updatedProducts;
+        this.isLoadingProducts = false;
+      });
+
     this.searchSubscription = searchInteractionService.searchAnnounced$
-      .subscribe((text) => {
-        console.log('req');
-        this.getProducts();
+      .subscribe((searchProduct: SearchProduct) => {
+        console.log(searchProduct);
+        this.getProducts(searchProduct);
       });
   }
 
   ngOnInit() {
-    this.getProducts();
+    this.getProducts(new SearchProduct());
   }
 
   ngOnDestroy() {
     this.searchSubscription.unsubscribe();
+    this.productsSubscription.unsubscribe();
+    this.requestProductsSubscription.unsubscribe();
   }
 
-  searchText(text: string) {
-    console.log('req');
-    this.getProducts();
-  }
-
-  getProducts() {
+  getProducts(searchProduct: SearchProduct) {
 
     this.isLoadingProducts = true;
 
     // Stop request
-    if (this.getProductsSubscription != undefined && !this.getProductsSubscription.isUnsubscribed) {
-      this.getProductsSubscription.unsubscribe();
+    if (this.requestProductsSubscription != undefined && !this.requestProductsSubscription.isUnsubscribed) {
+      this.requestProductsSubscription.unsubscribe();
     }
 
-    this.getProductsSubscription = this.productService.getProducts()
-      .subscribe((res) => {
-        this.isLoadingProducts = false;
-
-        this.products.push(...res.json().list);
-      });
+    this.requestProductsSubscription = this.productService.getAll(searchProduct);
   }
 
   showProduct(product: Product) {
