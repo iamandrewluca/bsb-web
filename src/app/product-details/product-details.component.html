@@ -1,3 +1,11 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--12-col">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored right-align" (click)="edit()">
+      Edit
+    </button>
+  </div>
+</div>
+
 <div class="mdl-grid" *ngIf="product">
   <div class="mdl-cell mdl-cell--12-col">
     <h6>{{product.title}}</h6>
@@ -14,5 +22,13 @@
     <div class="description">
       <p>{{product.description}}</p>
     </div>
+  </div>
+</div>
+
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--12-col">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent right-align" (click)="remove()">
+      Delete
+    </button>
   </div>
 </div>

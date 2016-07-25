@@ -26,7 +26,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
           .subscribe((updatedProducts) => {
             this.product = updatedProducts.find(product => product.id == params['id']);
           });
-        this.productService.get(params['id']);
+        this.productService.read(params['id']);
       }
     });
   }
@@ -34,6 +34,14 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.routeSub.unsubscribe();
     this.productSub.unsubscribe();
+  }
+
+  remove() {
+    this.productService.remove(this.product.id);
+  }
+
+  edit() {
+
   }
 
 }

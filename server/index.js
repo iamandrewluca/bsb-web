@@ -4,7 +4,7 @@
 // e.g. `server/mocks/ember-hamsters.js`
 //
 // module.exports = function(app) {
-//   app.get('/ember-hamsters', function(req, res) {
+//   app.read('/ember-hamsters', function(req, res) {
 //     res.send('hello');
 //   });
 // };

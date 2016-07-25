@@ -10,6 +10,7 @@ import {SettingsComponent} from "../settings/settings.component";
 import {ProfileComponent} from "../profile/profile.component";
 import {ProductService} from "../services/product.service";
 import {NewProductComponent} from "../new-product/new-product.component";
+import {ProductEditComponent} from "../product-edit/product-edit.component";
 
 export const HomeRoutes: RouterConfig = [
   {
@@ -20,6 +21,7 @@ export const HomeRoutes: RouterConfig = [
       { path: '', component: ProductsListComponent },
       { path: 'my-items', component: MyItemsComponent },
       { path: 'product/:id', component: ProductDetailsComponent },
+      { path: 'product/:id/edit', component: ProductEditComponent },
       { path: 'product', component: NewProductComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },

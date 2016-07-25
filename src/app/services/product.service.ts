@@ -5,7 +5,6 @@ import {environment} from "../environment";
 import {AuthHttp} from "angular2-jwt/angular2-jwt";
 import {SearchProduct} from "../models/search-product";
 import {Subject} from "rxjs/Rx";
-import {error} from "protractor/built/logger";
 
 @Injectable()
 export class ProductService {
@@ -23,7 +22,7 @@ export class ProductService {
     return this.products$.asObservable();
   }
 
-  getAll(searchProduct: SearchProduct) {
+  readAll(searchProduct: SearchProduct) {
 
     searchProduct.count = 10;
 
@@ -38,7 +37,7 @@ export class ProductService {
       }, error => console.log('Products could not load'));
   }
 
-  get(id: string) {
+  read(id: string) {
 
     let headers = ProductService.getTypeHeaders();
     return this.authHttp.get(environment.apiPath + this.productPath + id, {headers})
@@ -63,14 +62,43 @@ export class ProductService {
 
   create(product: Product) {
 
+    let headers = ProductService.getTypeHeaders();
+    this.authHttp.post(environment.apiPath + this.productPath, JSON.stringify(product), {headers})
+      .map(response => response.json())
+      .subscribe(data => {
+
+        this.dataStore.products.push(data.product);
+        this.products$.next(this.dataStore.products);
+      }, error => console.log('Could not create product.'));
   }
 
   update(product: Product) {
 
+    let headers = ProductService.getTypeHeaders();
+    this.authHttp.put(environment.apiPath + this.productPath + product.id, JSON.stringify(product), {headers})
+      .map(response => response.json())
+      .subscribe(data => {
+
+        this.dataStore.products.forEach((product, i) => {
+          if (product.id === data.id) { this.dataStore.products[i] = data; }
+        });
+        this.products$.next(this.dataStore.products);
+
+      }, error => console.log('Could not update product.'));
   }
 
   remove(id: string) {
 
+    let headers = ProductService.getTypeHeaders();
+    this.authHttp.delete(environment.apiPath + this.productPath + id, {headers})
+      .subscribe(response => {
+
+        this.dataStore.products.forEach((product, i) => {
+          if (product.id === id) { this.dataStore.products.splice(i, 1); }
+        });
+        this.products$.next(this.dataStore.products);
+
+      }, error => console.log('Could not delete product.'));
   }
 
   static getTypeHeaders() {
@@ -82,15 +110,14 @@ export class ProductService {
 
   paramsFromObject(obj: any): string {
 
-    // send only filled
-    // console.log('?' + Object.keys(obj)
-    //     .filter(key => obj[key])
-    //     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]))
-    //     .join('&'));
+    return '?' + Object.keys(obj)
+        .filter(key => obj[key])
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]))
+        .join('&');
 
-    return '?' + Object.keys(obj).map(function(key){
-      return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
-    }).join('&');
+    // return '?' + Object.keys(obj).map(function(key){
+    //   return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
+    // }).join('&');
   }
 
 }

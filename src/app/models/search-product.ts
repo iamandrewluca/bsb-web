@@ -7,5 +7,7 @@ export class SearchProduct {
     public categoryEnumList: string[] = [],
     public minCreatedDate: number = 0,
     public maxCreatedDate: number = 0,
-    public count: number = 0) {}
+    public count: number = 0,
+    public offset: number = 0,
+    public myProducts: boolean = false) {}
 }

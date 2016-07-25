@@ -58,7 +58,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       this.requestProductsSubscription.unsubscribe();
     }
 
-    this.requestProductsSubscription = this.productService.getAll(searchProduct);
+    this.requestProductsSubscription = this.productService.readAll(searchProduct);
   }
 
   showProduct(product: Product) {

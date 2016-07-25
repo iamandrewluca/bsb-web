@@ -5,6 +5,7 @@ module.exports = function(app) {
   var productRouter = express.Router();
   var chance = new Chance();
   var fs = require('fs');
+  var bodyParser = require('body-parser');
 
   /**
    * Saving this file will regenerate products if watcher is active
@@ -12,7 +13,7 @@ module.exports = function(app) {
    */
   var products = [];
 
-  for (var i = 0; i < 50; ++i) {
+  for (var i = 0; i < 15; ++i) {
     var product = {
       "id": chance.hash(),
       "borrow": chance.bool(),
@@ -33,7 +34,7 @@ module.exports = function(app) {
 
     res.send({
       'error': 'SUCCESS',
-      'list': products,
+      'list': products.slice(req.query.offset, req.query.count),
       'status': 'OK'
     });
   });
@@ -62,11 +63,18 @@ module.exports = function(app) {
   });
 
   productRouter.delete('/:id', function(req, res) {
+
+    var index = products.findIndex(function (product) {
+      return product.id == req.params.id;
+    });
+
+    products.splice(index, 1);
+
     res.status(204).end();
   });
 
   // testing image
-  // productRouter.get('/image/test', function (req, res) {
+  // productRouter.read('/image/test', function (req, res) {
   //   var img = fs.readFileSync('server/mocks/left.png');
   //   res.writeHead(200, {'Content-Type': 'image/png'});
   //   res.end(img, 'binary');
