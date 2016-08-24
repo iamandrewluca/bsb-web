@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       if (params['id'] != undefined) {
 
         this.productSub = this.productService.productsObservable$
-          .subscribe((updatedProducts) => {
+          .subscribe((updatedProducts: Product[]) => {
             this.product = updatedProducts.find(product => product.id == params['id']);
           });
         this.productService.read(params['id']);

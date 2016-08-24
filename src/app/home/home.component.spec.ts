@@ -1,7 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import {describe, expect, it, inject} from "@angular/core/testing";
-import {HomeComponent} from "./home.component";
+import {describe, it, inject} from "@angular/core/testing";
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 

@@ -74,11 +74,12 @@ module.exports = function(app) {
   });
 
   // testing image
-  // productRouter.read('/image/test', function (req, res) {
-  //   var img = fs.readFileSync('server/mocks/left.png');
-  //   res.writeHead(200, {'Content-Type': 'image/png'});
-  //   res.end(img, 'binary');
-  // });
+  productRouter.get('/image/test/jora', function (req, res) {
+    var img = fs.readFileSync('server/mocks/left.png');
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write(img.byteLength);
+    res.end();
+  });
 
   // The POST and PUT call will not contain a request body
   // because the body-parser is not included by default.
